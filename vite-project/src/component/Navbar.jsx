@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <nav className="nitu p-4">
-      <div className="container flex justify-between items-center sm:ml-12">
+      <div className="container flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-1 sm:gap-4">
           <a href="#">
@@ -20,14 +21,16 @@ const Navbar = () => {
         </div>
 
         {/* Menu Items for Desktop */}
-        <ul className="hidden md:flex space-x-8 text-white text-xl ">
-          <li><a className='hover:text-cyan-400 ' href="">Home</a></li>
-          <li><a className='hover:text-cyan-400 ' href="">About Us</a></li>
-          <li><a className='hover:text-cyan-400 ' href="">Events</a></li>
-          <li><a className='hover:text-cyan-400 ' href="">Gallery</a></li>
-          <li><a className='hover:text-cyan-400 ' href="">Team</a></li>
-          <li><a className='hover:text-cyan-400 ' href="">Membership</a></li>
-          <li><a className='hover:text-cyan-400 ' href="">Contact Us</a></li>
+        <ul className="hidden md:flex space-x-8 text-white text-xl ml-auto">
+          {/* `ml-auto` pushes the items to the right end */}
+          <Link to="/"> <li><a className='hover:text-cyan-400' href="">Home</a></li></Link>
+          <Link to="/about"><li><a className='hover:text-cyan-400' href="">About Us</a></li></Link>
+          <Link to="/events"><li><a className='hover:text-cyan-400' href="">Events</a></li></Link>
+          <Link to="/gallery"><li><a className='hover:text-cyan-400' href="">Gallery</a></li></Link>
+          <Link to="/team"><li><a className='hover:text-cyan-400' href="">Team</a></li></Link>
+          <Link to="/signin"><li><a className='hover:text-cyan-400' href="">Membership</a></li></Link>
+          <Link to="/contact"><li><a className='hover:text-cyan-400' href="">Contact Us</a></li></Link>
+         
         </ul>
 
         {/* Mobile Menu Button */}
@@ -58,13 +61,16 @@ const Navbar = () => {
       {/* Mobile Menu Items */}
       {isMobileMenuOpen && (
         <ul className="md:hidden flex flex-col items-center mt-4 space-y-4 text-white font-medium">
-          <li><a className='hover:text-cyan-400' href="">Home</a></li>
-          <li><a className='hover:text-cyan-400' href="">About Us</a></li>
-          <li><a className='hover:text-cyan-400' href="">Events</a></li>
-          <li><a className='hover:text-cyan-400' href="">Gallery</a></li>
-          <li><a className='hover:text-cyan-400' href="">Team</a></li>
-          <li><a className='hover:text-cyan-400' href="">Membership</a></li>
-          <li><a className='hover:text-cyan-400' href="">Contact Us</a></li>
+          <Link to="/signin"> <li><a className='hover:text-cyan-400' href="">Home</a></li></Link>
+          <Link to="/login"><li><a className='hover:text-cyan-400' href="">About Us</a></li></Link>
+          <Link to="/login"><li><a className='hover:text-cyan-400' href="">Events</a></li></Link>
+          <Link to="/login"><li><a className='hover:text-cyan-400' href="">Gallery</a></li></Link>
+          <Link to="/login"><li><a className='hover:text-cyan-400' href="">Team</a></li></Link>
+          <Link to="/signin"><li><a className='hover:text-cyan-400' href="">Membership</a></li></Link>
+          <Link to="/login"><li><a className='hover:text-cyan-400' href="">Contact Us</a></li></Link>
+         
+        
+          
         </ul>
       )}
     </nav>
