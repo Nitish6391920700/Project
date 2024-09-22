@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <nav className="nitu p-4">
-      <div className="container flex justify-between items-center sm:ml-12">
+      <div className="container flex justify-between items-center ">
         {/* Logo */}
         <div className="flex items-center gap-1 sm:gap-4">
           <a href="#">
