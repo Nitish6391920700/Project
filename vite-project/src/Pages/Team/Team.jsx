@@ -1,142 +1,169 @@
-import React from "react";
-import { FaInstagram } from "react-icons/fa";
-
-const instructors = [
-  {
-    id: 1,
-    name: "Maxwell Doe",
-    position: "Instructor",
-    image: "https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert1.png",
-    socialLinks: {
-      twitter: "http://www.twitter.com/",
-      facebook: "http://www.facebook.com/",
-      instagram: "http://www.instagram.com/",
-      email: "http://www.gmail.com/"
-    }
-  },
-  {
-    id: 2,
-    name: "Maxwell Doe",
-    position: "Instructor",
-    image: "https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert2.png",
-    socialLinks: {
-      twitter: "http://www.twitter.com/",
-      facebook: "http://www.facebook.com/",
-      instagram: "http://www.instagram.com/",
-      email: "http://www.gmail.com/"
-    }
-  },
-  {
-    id: 3,
-    name: "Maxwell Doe",
-    position: "Instructor",
-    image: "https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert1.png",
-    socialLinks: {
-      twitter: "http://www.twitter.com/",
-      facebook: "http://www.facebook.com/",
-      instagram: "http://www.instagram.com/",
-      email: "http://www.gmail.com/"
-    }
-  },
-  {
-    id: 4,
-    name: "Maxwell Doe",
-    position: "Instructor",
-    image: "https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert2.png",
-    socialLinks: {
-      twitter: "http://www.twitter.com/",
-      facebook: "http://www.facebook.com/",
-      instagram: "http://www.instagram.com/",
-      email: "http://www.gmail.com/"
-    }
-  },
-  {
-    id: 5,
-    name: "Maxwell Doe",
-    position: "Instructor",
-    image: "https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert1.png",
-    socialLinks: {
-      twitter: "http://www.twitter.com/",
-      facebook: "http://www.facebook.com/",
-      instagram: "http://www.instagram.com/",
-      email: "http://www.gmail.com/"
-    }
-  },
-  {
-    id: 6,
-    name: "Maxwell Doe",
-    position: "Instructor",
-    image: "https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert1.png",
-    socialLinks: {
-      twitter: "http://www.twitter.com/",
-      facebook: "http://www.facebook.com/",
-      instagram: "http://www.instagram.com/",
-      email: "http://www.gmail.com/"
-    }
-  },
-  {
-    id: 7,
-    name: "Maxwell Doe",
-    position: "Instructor",
-    image: "https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert1.png",
-    socialLinks: {
-      twitter: "http://www.twitter.com/",
-      facebook: "http://www.facebook.com/",
-      instagram: "http://www.instagram.com/",
-      email: "http://www.gmail.com/"
-    }
-  },
-  {
-    id: 8,
-    name: "Maxwell Doe",
-    position: "Instructor",
-    image: "https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/expert1.png",
-    socialLinks: {
-      twitter: "http://www.twitter.com/",
-      facebook: "http://www.facebook.com/",
-      instagram: "http://www.instagram.com/",
-      email: "http://www.gmail.com/"
-    }
-  },
-  
-];
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const InstructorCard = () => {
+  const [instructors, setInstructors] = useState([]);
+
+  useEffect(() => {
+    fetchTeamMembers();
+  }, []);
+
+  const fetchTeamMembers = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/teams');
+      setInstructors(response.data);
+    } catch (error) {
+      console.error('Error fetching team members:', error);
+    }
+  };
+
+  // Hardcoded Faculty Advisor profile
+  const facultyAdvisor = {
+    id: 1,
+    name: "Dr. John Doe",
+    position: "Faculty Advisor",
+    imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQG0BG6qtZG8kg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1688828967198?e=1732752000&v=beta&t=A8H5vPFeA6cJEFRyRyDnmkQpfHW-RzgrTy_AE_VFgkw", // Replace with an actual image URL
+    socialLinks: {
+      twitter: "https://twitter.com/facultyadvisor",
+      facebook: "https://facebook.com/facultyadvisor",
+      instagram: "https://instagram.com/facultyadvisor",
+      email: "mailto:facultyadvisor@example.com"
+    }
+  };
+
+  // Hardcoded Instructor profiles
+  const hardcodedInstructors = [
+    {
+      id: 2,
+      name: "Jane Smith",
+      position: "Senior Instructor",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQG0BG6qtZG8kg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1688828967198?e=1732752000&v=beta&t=A8H5vPFeA6cJEFRyRyDnmkQpfHW-RzgrTy_AE_VFgkw", // Replace with actual image URL
+      socialLinks: {
+        twitter: "https://twitter.com/janesmith",
+        facebook: "https://facebook.com/janesmith",
+        instagram: "https://instagram.com/janesmith",
+        email: "mailto:janesmith@example.com"
+      }
+    },
+    {
+      id: 3,
+      name: "Mark Johnson",
+      position: "Instructor",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQG0BG6qtZG8kg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1688828967198?e=1732752000&v=beta&t=A8H5vPFeA6cJEFRyRyDnmkQpfHW-RzgrTy_AE_VFgkw",
+      socialLinks: {
+        twitter: "https://twitter.com/markjohnson",
+        facebook: "https://facebook.com/markjohnson",
+        instagram: "https://instagram.com/markjohnson",
+        email: "mailto:markjohnson@example.com"
+      }
+    },
+    {
+      id: 4,
+      name: "Emily Davis",
+      position: "Junior Instructor",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQG0BG6qtZG8kg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1688828967198?e=1732752000&v=beta&t=A8H5vPFeA6cJEFRyRyDnmkQpfHW-RzgrTy_AE_VFgkw",
+      socialLinks: {
+        twitter: "https://twitter.com/emilydavis",
+        facebook: "https://facebook.com/emilydavis",
+        instagram: "https://instagram.com/emilydavis",
+        email: "mailto:emilydavis@example.com"
+      }
+    }
+  ];
+
   return (
-    <div className="flex flex-wrap justify-evenly bg-blue-50 py-10 px-4"
-    style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1638184984605-af1f05249a56?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-      }}
-    >
+    <div className=" justify-evenly py-10 px-4">
       <div className="max-w-6xl mx-auto text-center mb-10">
-        <h2 className="text-4xl font-bold  text-cyan-400 mb-4">Meet Our Expert Instructors</h2>
-        <p className="text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h2 className="text-4xl font-bold text-cyan-400 mb-4">Meet Our Expert Team </h2>
+       <p className="text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {instructors.map((instructor) => (
-          <div key={instructor.id} className=" p-6 rounded-lg shadow-lg flex flex-col items-center">
-            <div className="w-48 h-48 mb-4">
-              <img className="rounded-full object-cover w-full h-full" src={instructor.image} alt={instructor.name} />
-            </div>
-            <h3 className="text-2xl font-semibold text-gray-700">{instructor.name}</h3>
-            <p className="text-xl  text-cyan-400">{instructor.position}</p>
-            <div className="flex mt-4 space-x-4">
-              <a href={instructor.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
-                <img  className="w-5 pt-1" src="https://www.svgrepo.com/show/475689/twitter-color.svg" alt="Twitter" />
-              </a>
-              <a href={instructor.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
-                <img className="w-5 pt-1" src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook" />
-              </a>
-              <a href={instructor.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
-              <img className="w-5 pt-1" src="https://www.svgrepo.com/show/303145/instagram-2-1-logo.svg" alt="Email" />
-              </a>
-              <a href={instructor.socialLinks.email} target="_blank" rel="noopener noreferrer">
-                <img className="w-5 pt-1" src="https://www.svgrepo.com/show/223047/gmail.svg" alt="Email" />
-              </a>
-            </div>
+      
+
+      {/* Faculty Advisor Section */}
+      <div className="max-w-6xl mx-auto text-center mb-10">
+        <h2 className="text-3xl font-bold text-cyan-400 mb-4">1. Faculty Advisor</h2>
+        <div className="p-6 rounded-lg shadow-lg flex flex-col items-center">
+          <div className="w-48 h-48 mb-4">
+            <img className="rounded-full object-cover w-full h-full" src={facultyAdvisor.imageUrl} alt={facultyAdvisor.name} />
           </div>
-        ))}
+          <h3 className="text-2xl font-semibold text-gray-700">{facultyAdvisor.name}</h3>
+          <p className="text-xl text-cyan-400">{facultyAdvisor.position}</p>
+          <div className="flex mt-4 space-x-4">
+            <a href={facultyAdvisor.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
+              <img className="w-5 pt-1" src="https://www.svgrepo.com/show/475689/twitter-color.svg" alt="Twitter" />
+            </a>
+            <a href={facultyAdvisor.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+              <img className="w-5 pt-1" src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook" />
+            </a>
+            <a href={facultyAdvisor.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+              <img className="w-5 pt-1" src="https://www.svgrepo.com/show/303145/instagram-2-1-logo.svg" alt="Instagram" />
+            </a>
+            <a href={facultyAdvisor.socialLinks.email} target="_blank" rel="noopener noreferrer">
+              <img className="w-5 pt-1" src="https://www.svgrepo.com/show/223047/gmail.svg" alt="Email" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      {/* Instructors Section */}
+      <div className="max-w-6xl mx-auto text-center mb-10">
+        <h2 className="text-3xl font-bold text-cyan-400 mb-4">2. Instructors</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {hardcodedInstructors.map((instructor) => (
+            <div key={instructor.id} className="p-6 rounded-lg shadow-lg flex flex-col items-center">
+              <div className="w-48 h-48 mb-4">
+                <img className="rounded-full object-cover w-full h-full" src={instructor.imageUrl} alt={instructor.name} />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-700">{instructor.name}</h3>
+              <p className="text-xl text-cyan-400">{instructor.position}</p>
+              <div className="flex mt-4 space-x-4">
+                <a href={instructor.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
+                  <img className="w-5 pt-1" src="https://www.svgrepo.com/show/475689/twitter-color.svg" alt="Twitter" />
+                </a>
+                <a href={instructor.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+                  <img className="w-5 pt-1" src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook" />
+                </a>
+                <a href={instructor.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+                  <img className="w-5 pt-1" src="https://www.svgrepo.com/show/303145/instagram-2-1-logo.svg" alt="Instagram" />
+                </a>
+                <a href={instructor.socialLinks.email} target="_blank" rel="noopener noreferrer">
+                  <img className="w-5 pt-1" src="https://www.svgrepo.com/show/223047/gmail.svg" alt="Email" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Fetched Dynamic Instructors */}
+      <div className="max-w-6xl mx-auto text-center mb-10">
+        <h2 className="text-3xl font-bold text-cyan-400 mb-4">3. Additional Team Members</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {instructors.map((instructor) => (
+            <div key={instructor.id} className="p-6 rounded-lg shadow-lg flex flex-col items-center">
+              <div className="w-48 h-48 mb-4">
+                <img className="rounded-full object-cover w-full h-full" src={instructor.imageUrl} alt={instructor.name} />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-700">{instructor.name}</h3>
+              <p className="text-xl text-cyan-400">{instructor.position}</p>
+              <div className="flex mt-4 space-x-4">
+                <a href={instructor.socialLinks.twitter} target="_blank" rel="noopener noreferrer">
+                  <img className="w-5 pt-1" src="https://www.svgrepo.com/show/475689/twitter-color.svg" alt="Twitter" />
+                </a>
+                <a href={instructor.socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+                  <img className="w-5 pt-1" src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook" />
+                </a>
+                <a href={instructor.socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+                  <img className="w-5 pt-1" src="https://www.svgrepo.com/show/303145/instagram-2-1-logo.svg" alt="Instagram" />
+                </a>
+                <a href={instructor.socialLinks.email} target="_blank" rel="noopener noreferrer">
+                  <img className="w-5 pt-1" src="https://www.svgrepo.com/show/223047/gmail.svg" alt="Email" />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

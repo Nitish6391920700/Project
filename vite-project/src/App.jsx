@@ -11,8 +11,6 @@ import Signup from "./Pages/User/Signup"
 import Login from "./Pages/User/Login"
 import InstructorsSection from "./Pages/Team/Team"
 import CardGalleryComponent from "./Pages/Gallary/Gallery"
-import LandingPage from "./component/ContactUs"
-import AboutPage from "./component/About"
 
  
 
@@ -36,18 +34,11 @@ function App() {
         <Route path="/gallery" element={<Layout>
          <CardGalleryComponent/>
         </Layout>} />
-        <Route path="/contact" element={<Layout>
-         <LandingPage/>
-        </Layout>} />
-        <Route path="/about" element={<Layout>
-         <AboutPage/>
-        </Layout>} />
-        
-        
       
       </Routes>
      </BrowserRouter>
   )
+   
 }
 
 export default App

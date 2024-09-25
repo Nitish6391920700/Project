@@ -89,12 +89,12 @@ const CardGalleryComponent = () => {
   return (
     <div className="relative min-h-screen" 
     style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1638184984605-af1f05249a56?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+        // backgroundImage:
+        //   "url('https://images.unsplash.com/photo-1638184984605-af1f05249a56?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
       }}>
       {/* Card Section */}
       {!selectedImages.length && (
-        <div className="flex flex-wrap justify-center space-x-4 mt-12 px-4">
+        <div className="flex flex-wrap justify-center space-x-4  px-4">
           {cardsData.map((card) => (
             <div
               key={card.id}

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import logo from '../assets/logo.png';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
+// import profileLogo from '../assets/profile.png'; // Profile image
+import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,7 +20,9 @@ const Navbar = () => {
               className="h-12 sm:h-20 w-auto"
             />
           </a>
-          <h1 className='sm:text-2xl font-medium text-white'>IEEE-<span className='text-cyan-400'>SB</span>||MMMUT</h1>
+          <h1 className='sm:text-2xl font-medium text-white'>
+            IEEE-<span className='text-cyan-400'>SB</span>||MMMUT
+          </h1>
         </div>
 
         {/* Menu Items for Desktop */}
