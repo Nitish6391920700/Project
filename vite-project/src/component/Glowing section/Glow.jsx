@@ -2,7 +2,7 @@ import React from "react";
 
 const GlowingCircle = () => {
   return (
-    <div className="flex items-center justify-center gap-16 sm:gap-80 p-4 ">
+    <div className="flex items-center justify-center gap-16 sm:gap-60 p-4 2xl:gap-80 ">
       {/* First Circle */}
       <div className="relative flex items-center justify-center w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] bg-[#6d6a6a] rounded-full shadow-custom">
         <div className="absolute w-full h-full bg-[#b9adad] rounded-full animate-glow"></div>

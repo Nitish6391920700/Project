@@ -6,34 +6,7 @@ import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    // Retrieve token from localStorage
-    const token = localStorage.getItem('accessToken');
-    
-    if (token) {
-      try {
-        // Optional: Decode JWT to check validity
-        const decodedToken = jwtDecode(token);
-        const currentTime = Date.now() / 1000; // Current time in seconds
-
-        if (decodedToken.exp && decodedToken.exp > currentTime) {
-          // Token is valid and not expired
-          setIsLoggedIn(true);
-        } else {
-          // Token is expired, clear it
-          localStorage.removeItem('accessToken');
-          setIsLoggedIn(false);
-        }
-      } catch (error) {
-        // Invalid token or decoding error
-        console.error("Invalid token:", error);
-        setIsLoggedIn(false);
-      }
-    }
-  }, []);
-  console.log(isLoggedIn)
+  const [isAboutDrawerOpen, setAboutDrawerOpen] = useState(false);
 
   return (
     <nav className="nitu p-4">
@@ -54,26 +27,34 @@ const Navbar = () => {
 
         {/* Menu Items for Desktop */}
         <ul className="hidden md:flex space-x-8 text-white text-xl ml-auto">
-          <Link to="/"> <li><a className='hover:text-cyan-400' href="">Home</a></li></Link>
-          <Link to="/about"><li><a className='hover:text-cyan-400' href="">About Us</a></li></Link>
-          <Link to="/events"><li><a className='hover:text-cyan-400' href="">Events</a></li></Link>
-          <Link to="/gallery"><li><a className='hover:text-cyan-400' href="">Gallery</a></li></Link>
-          <Link to="/team"><li><a className='hover:text-cyan-400' href="">Team</a></li></Link>
-          <Link to="/signin"><li><a className='hover:text-cyan-400' href="">Membership</a></li></Link>
-          <Link to="/contact"><li><a className='hover:text-cyan-400' href="">Contact Us</a></li></Link>
-
-          {/* Profile Logo - Only show if logged in */}
-          {isLoggedIn && (
-            <li>
-              <Link to="/admin">
-                <img
-                  src={logo} // Path to profile image
-                  alt="Profile"
-                  className="h-10 w-10 rounded-full"
-                />
-              </Link>
-            </li>
-          )}
+          {/* `ml-auto` pushes the items to the right end */}
+          <Link to="/"> <li><a className='hover:text-cyan-400'>Home</a></li></Link>
+          
+          {/* About Us with Drawer */}
+          <li className="relative">
+            <Link 
+            to={'/about'}
+              className="hover:text-cyan-400 focus:outline-none"
+              onClick={() => setAboutDrawerOpen(!isAboutDrawerOpen)}
+            >
+              About Us
+            </Link>
+            
+            {/* Drawer (Submenu) */}
+            {/* {isAboutDrawerOpen && (
+              <ul className="absolute top-full z-50 left-0 bg-gray-800 text-white text-sm rounded shadow-lg mt-2 py-2 w-48">
+                <Link to="/about/history"><li className='hover:bg-gray-700 px-4 py-2'>History</li></Link>
+                <Link to="/about/vision"><li className='hover:bg-gray-700 px-4 py-2'>Vision & Mission</li></Link>
+                <Link to="/about/team"><li className='hover:bg-gray-700 px-4 py-2'>Our Team</li></Link>
+              </ul>
+            )} */}
+          </li>
+          
+          <Link to="/events"><li><a className='hover:text-cyan-400'>Events</a></li></Link>
+          <Link to="/gallery"><li><a className='hover:text-cyan-400'>Gallery</a></li></Link>
+          <Link to="/team"><li><a className='hover:text-cyan-400'>Team</a></li></Link>
+          <Link to="/signin"><li><a className='hover:text-cyan-400'>Membership</a></li></Link>
+          <Link to="/contact"><li><a className='hover:text-cyan-400'>Contact Us</a></li></Link>
         </ul>
 
         {/* Mobile Menu Button */}
@@ -104,26 +85,31 @@ const Navbar = () => {
       {/* Mobile Menu Items */}
       {isMobileMenuOpen && (
         <ul className="md:hidden flex flex-col items-center mt-4 space-y-4 text-white font-medium">
-          <Link to="/"> <li><a className='hover:text-cyan-400' href="">Home</a></li></Link>
-          <Link to="/about"><li><a className='hover:text-cyan-400' href="">About Us</a></li></Link>
-          <Link to="/events"><li><a className='hover:text-cyan-400' href="">Events</a></li></Link>
-          <Link to="/gallery"><li><a className='hover:text-cyan-400' href="">Gallery</a></li></Link>
-          <Link to="/team"><li><a className='hover:text-cyan-400' href="">Team</a></li></Link>
-          <Link to="/signin"><li><a className='hover:text-cyan-400' href="">Membership</a></li></Link>
-          <Link to="/contact"><li><a className='hover:text-cyan-400' href="">Contact Us</a></li></Link>
+          <Link to="/"> <li><a className='hover:text-cyan-400'>Home</a></li></Link>
+          
+          {/* About Us with Drawer in Mobile */}
+          <li>
+            <button
+              className="hover:text-cyan-400 focus:outline-none"
+              onClick={() => setAboutDrawerOpen(!isAboutDrawerOpen)}
+            >
+              About Us
+            </button>
+            {isAboutDrawerOpen && (
+              <ul className="flex flex-col space-y-2 mt-2">
+                <Link to="/about/history"><li className='hover:text-cyan-400'>History</li></Link>
+                <Link to="/about/vision"><li className='hover:text-cyan-400'>Vision & Mission</li></Link>
+                <Link to="/about/team"><li className='hover:text-cyan-400'>Our Team</li></Link>
+              </ul>
+            )}
+            
+          </li>
 
-          {/* Profile Logo for mobile view */}
-          {isLoggedIn && (
-            <li>
-              <Link to="/admin">
-                <img
-                  src={logo}
-                  alt="Profile"
-                  className="h-10 w-10 rounded-full"
-                />
-              </Link>
-            </li>
-          )}
+          <Link to="/events"><li><a className='hover:text-cyan-400'>Events</a></li></Link>
+          <Link to="/gallery"><li><a className='hover:text-cyan-400'>Gallery</a></li></Link>
+          <Link to="/team"><li><a className='hover:text-cyan-400'>Team</a></li></Link>
+          <Link to="/signin"><li><a className='hover:text-cyan-400'>Membership</a></li></Link>
+          <Link to="/contact"><li><a className='hover:text-cyan-400'>Contact Us</a></li></Link>
         </ul>
       )}
     </nav>
