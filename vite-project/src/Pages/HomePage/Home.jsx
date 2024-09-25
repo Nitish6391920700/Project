@@ -4,6 +4,7 @@ import RippleEffectCircle from '../../component/Glowing section/Glow'
 import Intro from '../../component/Intro/Intro'
 import NewsSection from '../../component/NewsSection'
 import OurGoals from '../../component/OurGoals'
+import Footer from '../../component/Footer'
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <RippleEffectCircle/>
       <NewsSection/>
       <OurGoals/>
+      <Footer/>
     </div>
   )
 }
