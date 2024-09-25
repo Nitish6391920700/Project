@@ -39,10 +39,10 @@ const Signup = () => {
     <div
       className="h-screen  bg-cover bg-center flex items-center justify-center"
       style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1638184984605-af1f05249a56?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+        // backgroundImage: "url('https://images.unsplash.com/photo-1638184984605-af1f05249a56?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
       }}
     >
-      <div className="bg-white bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg  max-w-lg  w-full">
+      <div className=" bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg  max-w-lg  w-full">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="Logo" className="h-16" />
         </div>

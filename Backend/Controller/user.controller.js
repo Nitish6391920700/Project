@@ -70,6 +70,8 @@ const Login = asyncHandler(async(req,res)=>{
     }
     //generate access token
     const {accessToken,refreshToken} = await generateToken(userToLogin._id);
+    // localStorage.setItem('accessToken', accessToken);
+
     // removing unwanted infor from res
   const loggedUser = await user.findById(userToLogin._id).select(
     " -password -refreshToken"
