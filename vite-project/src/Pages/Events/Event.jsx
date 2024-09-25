@@ -146,8 +146,7 @@ const Carousel = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    prevArrow: <CustomPrevArrow />,  // Custom left arrow
-    nextArrow: <CustomNextArrow />,  // Custom right arrow
+    
   };
 
   return (
@@ -176,31 +175,6 @@ const Carousel = () => {
   );
 };
 
-// Custom Arrow Components
-const CustomPrevArrow = (props) => {
-  const { className, onClick } = props;
-  return (
-    <div
-      className={`${className} slick-prev bg-green-500 text-white rounded-full absolute top-1/2 transform -translate-y-1/2`}
-      onClick={onClick}
-      style={{ left: '-35px' }}  // Position the arrow
-    >
-      ◀
-    </div>
-  );
-};
 
-const CustomNextArrow = (props) => {
-  const { className, onClick } = props;
-  return (
-    <div
-      className={`${className} slick-next bg-green-500 text-white rounded-full absolute top-1/2 transform -translate-y-1/2`}
-      onClick={onClick}
-      style={{ right: '-35px' }}  // Position the arrow
-    >
-      ▶
-    </div>
-  );
-};
 
 export default Carousel;
