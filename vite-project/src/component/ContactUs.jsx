@@ -2,13 +2,13 @@ import React from "react";
 
 const LandingPage = () => {
   return (
-    <div className="landing_page relative bg-black">
+    <div className="landing_page relative ">
       <div className="relative flex flex-wrap justify-start w-full p-0 mx-auto mt-0 mb-0">
-        <img
+        {/* <img
           className="absolute inset-0 w-full h-full object-cover opacity-50"
           src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/clothes-bg.png"
           alt="Background"
-        />
+        /> */}
         <div className="relative flex flex-wrap justify-start max-w-screen-xl mx-auto mt-16 mb-16 ">
           <div className="flex items-center justify-start w-full p-0 md:w-6/12">
             <div className="content-box text-white">
@@ -52,8 +52,8 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-center w-full md:w-6/12">
-            <form className="form-box bg-gray-900 text-white p-8 max-w-lg">
+          <div className="flex justify-center w-full md:w-6/12 ">
+            <form className="form-box bg-gray-900 text-white p-8 max-w-lg border-[0.5px]">
               <p className="text-blk text-3xl leading-tight mb-4">Get a quote</p>
               <p className="text-blk text-gray-400 mb-6">
                 We will get back to you in 24 hours
@@ -93,7 +93,7 @@ const LandingPage = () => {
                 </div>
                 <div className="w-80 mb-4 pt-4">
                   <textarea
-                    className="w-full h-60 bg-gray-800 text-lg p-4 rounded border border-gray-600"
+                    className="w-full h-40 bg-gray-800 text-lg p-4 rounded border border-gray-600"
                     placeholder="Type message here"
                     name="Message"
                   />
