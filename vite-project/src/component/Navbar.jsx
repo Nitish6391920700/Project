@@ -1,13 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
 // import profileLogo from '../assets/profile.png'; // Profile image
-import { jwtDecode } from "jwt-decode";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isAboutDrawerOpen, setAboutDrawerOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Change this based on authentication
 
+  const islogin = localStorage.getItem('accessToken');
+  useEffect(()=>{
+    if(islogin){
+      setIsLoggedIn(true)
+      localStorage.setItem('login',true);
+    }
+  })
+
+
+  const logout = () => {
+    localStorage.removeItem('accessToken');
+    setIsLoggedIn(false);
+    localStorage.setItem('login',false);
+  };
   return (
     <nav className="nitu p-4">
       <div className="container flex justify-between items-center">
@@ -27,34 +41,38 @@ const Navbar = () => {
 
         {/* Menu Items for Desktop */}
         <ul className="hidden md:flex space-x-8 text-white text-xl ml-auto">
-          {/* `ml-auto` pushes the items to the right end */}
-          <Link to="/"> <li><a className='hover:text-cyan-400'>Home</a></li></Link>
-          
+          <NavLink to="/" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Home</li></NavLink>
+
           {/* About Us with Drawer */}
           <li className="relative">
-            <Link 
-            to={'/about'}
-              className="hover:text-cyan-400 focus:outline-none"
+            <NavLink 
+              to={'/about'}
+              className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}
               onClick={() => setAboutDrawerOpen(!isAboutDrawerOpen)}
             >
               About Us
-            </Link>
-            
-            {/* Drawer (Submenu) */}
-            {/* {isAboutDrawerOpen && (
-              <ul className="absolute top-full z-50 left-0 bg-gray-800 text-white text-sm rounded shadow-lg mt-2 py-2 w-48">
-                <Link to="/about/history"><li className='hover:bg-gray-700 px-4 py-2'>History</li></Link>
-                <Link to="/about/vision"><li className='hover:bg-gray-700 px-4 py-2'>Vision & Mission</li></Link>
-                <Link to="/about/team"><li className='hover:bg-gray-700 px-4 py-2'>Our Team</li></Link>
-              </ul>
-            )} */}
+            </NavLink>
           </li>
-          
-          <Link to="/events"><li><a className='hover:text-cyan-400'>Events</a></li></Link>
-          <Link to="/gallery"><li><a className='hover:text-cyan-400'>Gallery</a></li></Link>
-          <Link to="/team"><li><a className='hover:text-cyan-400'>Team</a></li></Link>
-          <Link to="/signin"><li><a className='hover:text-cyan-400'>Membership</a></li></Link>
-          <Link to="/contact"><li><a className='hover:text-cyan-400'>Contact Us</a></li></Link>
+
+          <NavLink to="/events" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Events</li></NavLink>
+          <NavLink to="/gallery" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Gallery</li></NavLink>
+          <NavLink to="/team" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Team</li></NavLink>
+          <NavLink to="/signin" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Membership</li></NavLink>
+          <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Contact Us</li></NavLink>
+
+          {/* Profile Icon when logged in */}
+          {isLoggedIn && (
+            <>
+            <NavLink to="/admin" className="ml-4">
+              <img
+                src='https://listimg.pinclipart.com/picdir/s/367-3673668_open-man-with-tie-icon-clipart.png' // Path to profile image
+                alt="Profile"
+                className="h-10 w-10 rounded-full"
+              />
+            </NavLink>
+            <button  onClick={logout}>Logout</button>
+            </>
+          )}
         </ul>
 
         {/* Mobile Menu Button */}
@@ -85,8 +103,8 @@ const Navbar = () => {
       {/* Mobile Menu Items */}
       {isMobileMenuOpen && (
         <ul className="md:hidden flex flex-col items-center mt-4 space-y-4 text-white font-medium">
-          <Link to="/"> <li><a className='hover:text-cyan-400'>Home</a></li></Link>
-          
+          <NavLink to="/" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Home</li></NavLink>
+
           {/* About Us with Drawer in Mobile */}
           <li>
             <button
@@ -97,19 +115,29 @@ const Navbar = () => {
             </button>
             {isAboutDrawerOpen && (
               <ul className="flex flex-col space-y-2 mt-2">
-                <Link to="/about/history"><li className='hover:text-cyan-400'>History</li></Link>
-                <Link to="/about/vision"><li className='hover:text-cyan-400'>Vision & Mission</li></Link>
-                <Link to="/about/team"><li className='hover:text-cyan-400'>Our Team</li></Link>
+                <NavLink to="/about/history"><li className='hover:text-cyan-400'>History</li></NavLink>
+                <NavLink to="/about/vision"><li className='hover:text-cyan-400'>Vision & Mission</li></NavLink>
+                <NavLink to="/about/team"><li className='hover:text-cyan-400'>Our Team</li></NavLink>
               </ul>
             )}
-            
           </li>
 
-          <Link to="/events"><li><a className='hover:text-cyan-400'>Events</a></li></Link>
-          <Link to="/gallery"><li><a className='hover:text-cyan-400'>Gallery</a></li></Link>
-          <Link to="/team"><li><a className='hover:text-cyan-400'>Team</a></li></Link>
-          <Link to="/signin"><li><a className='hover:text-cyan-400'>Membership</a></li></Link>
-          <Link to="/contact"><li><a className='hover:text-cyan-400'>Contact Us</a></li></Link>
+          <NavLink to="/events" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Events</li></NavLink>
+          <NavLink to="/gallery" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Gallery</li></NavLink>
+          <NavLink to="/team" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Team</li></NavLink>
+          <NavLink to="/signin" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Membership</li></NavLink>
+          <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Contact Us</li></NavLink>
+
+          {/* Profile Icon when logged in */}
+          {isLoggedIn && (
+            <NavLink to="/profile" className="mt-4">
+              <img
+                src={profileLogo} // Path to profile image
+                alt="Profile"
+                className="h-10 w-10 rounded-full"
+              />
+            </NavLink>
+          )}
         </ul>
       )}
     </nav>

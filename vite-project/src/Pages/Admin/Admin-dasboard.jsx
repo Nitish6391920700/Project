@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminForm from './admin.update';
+import ImageUploadForm from '../Events/HiglightsForm';
 
 const AdminDashboard = () => {
   return (
@@ -25,6 +26,7 @@ const AdminDashboard = () => {
         <div className="bg-white shadow-md rounded-lg p-6">
           <h2 className="text-xl font-semibold mb-4">Welcome, Admin!</h2>
          <AdminForm/>
+         <ImageUploadForm/>
         </div>
       </main>
     </div>

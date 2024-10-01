@@ -123,21 +123,27 @@
 // };
 
 // export default Carousel;
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import CardGrid from './Cards';
+import axios from 'axios';
 
 const Carousel = () => {
-  const imageSet = [
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=60",
-    "https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?auto=format&fit=crop&w=1200&q=60",
-    "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=60",
-    "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60",
-  ];
+  const [imageSet, setImageSet] = useState([]);
+  const fetched = async() => {
+    // Fetch images dynamically from backend
+     const res = await axios.get('http://localhost:4000/highlights/getimages');
+     setImageSet(res.data);
+     console.log(res.data)
+  }
 
-  // Slick Slider Settings
+  useEffect(() => {
+
+    fetched();
+  }, []);
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -146,59 +152,27 @@ const Carousel = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
-    prevArrow: <CustomPrevArrow />,  // Custom left arrow
-    nextArrow: <CustomNextArrow />,  // Custom right arrow
   };
 
   return (
     <div className="relative w-full ">
-      <div className=' flex justify-center items-center mt-4 mb-4' >
-
-       <h1 className='text-cyan-400 text-5xl font-bold '>Glimpse of the Events</h1>
+      <div className='flex justify-center items-center mt-4 mb-4'>
+        <h1 className='text-cyan-400 text-5xl font-bold'>Glimpse of the Events</h1>
       </div>
-      {/* Slick Slider Container */}
       <div className="carousel-container w-[900px] h-[500px] mx-auto overflow-hidden relative rounded-lg">
-        {/* Slick Slider */}
         <Slider {...sliderSettings} className="mx-auto">
-          {imageSet.map((url, index) => (
+          {imageSet.length > 0 ? imageSet.map((item, index) => (
             <div key={index} className="carousel-item">
               <img
-                src={url}
+                src={item.url}
                 alt={`Image ${index + 1}`}
                 className="w-full h-auto rounded-lg shadow-md"
               />
             </div>
-          ))}
+          )) : <p>Loading images...</p>}
         </Slider>
       </div>
-      <CardGrid/>
-    </div>
-  );
-};
-
-// Custom Arrow Components
-const CustomPrevArrow = (props) => {
-  const { className, onClick } = props;
-  return (
-    <div
-      className={`${className} slick-prev bg-green-500 text-white rounded-full absolute top-1/2 transform -translate-y-1/2`}
-      onClick={onClick}
-      style={{ left: '-35px' }}  // Position the arrow
-    >
-      ◀
-    </div>
-  );
-};
-
-const CustomNextArrow = (props) => {
-  const { className, onClick } = props;
-  return (
-    <div
-      className={`${className} slick-next bg-green-500 text-white rounded-full absolute top-1/2 transform -translate-y-1/2`}
-      onClick={onClick}
-      style={{ right: '-35px' }}  // Position the arrow
-    >
-      ▶
+      <CardGrid />
     </div>
   );
 };

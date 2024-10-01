@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import router from './Routes/user.routes.js';
 import eventrouter from './Routes/events.routes.js'
 import trouter from './Routes/team.routes.js';
+import hrouter from './Routes/Highlights.routes.js';
 
 const app = express();
 app.use(cors({
@@ -17,6 +18,7 @@ app.use(cookieParser())
 app.use("/api/v1/users",router)
 app.use('/events',eventrouter);
 app.use('/teams',trouter);
+app.use('/highlights',hrouter);
 
 
 export{app};

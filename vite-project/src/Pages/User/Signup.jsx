@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import logo from "../../assets/logo.png";
-// import { set } from "mongoose";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -11,36 +10,38 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  
+  const navigate = useNavigate(); // Use it here, at the top level of the component
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent form reload
     setError(""); // Reset error message
     setSuccess(""); // Reset success message
-    const navigate = useNavigate();
 
     if (!fullName || !email || !gender || !password) {
       setError("All fields are required.");
       return;
     }
-          try {
-            const res = await axios.post("http://localhost:4000/api/v1/users/register",{fullName,email,password} )
-            console.log(res)
-            if(res.status === 201){
-              setSuccess("User created successfully")
-              navigate("/login")
-            }
-          } catch (error) {
-            setError(error) 
-          }
-    
+
+    try {
+      const res = await axios.post("http://localhost:4000/api/v1/users/register", {
+        fullName,
+        email,
+        password,
+      });
+      console.log(res);
+      if (res.status === 201) {
+        setSuccess("User created successfully");
+        navigate("/login"); // Use navigate to redirect
+      }
+    } catch (error) {
+      setError(error.response?.data?.message || "An error occurred");
+    }
   };
 
   return (
     <div
       className="h-screen  bg-cover bg-center flex items-center justify-center"
-      style={{
-        // backgroundImage: "url('https://images.unsplash.com/photo-1638184984605-af1f05249a56?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-      }}
     >
       <div className=" bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg  max-w-lg  w-full">
         <div className="flex justify-center mb-6">

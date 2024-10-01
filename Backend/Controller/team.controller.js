@@ -5,6 +5,7 @@ const teamController = {
   addTeamMember: async (req, res) => {
     try {
       const newTeamMember = new Team(req.body);
+      console.log(newTeamMember);
       await newTeamMember.save();
       res.status(201).json(newTeamMember);
     } catch (error) {
