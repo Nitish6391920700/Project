@@ -13,7 +13,7 @@ function Home() {
       <Intro/>
       <RippleEffectCircle/>
       <NewsSection/>
-      <OurGoals/>
+      {/* <OurGoals/> */}
       <Footer/>
     </div>
   )

@@ -14,7 +14,7 @@ function Intro() {
       </h1>
 
       {/* Responsive Content Box with Glassy Effect */}
-      <div className=" bg-gray-50 bg-opacity-20 backdrop-blur-lg rounded-xl shadow-lg p-4 sm:p-6 md:p-8 text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-6">
+      <div className="bg-opacity-20 backdrop-blur-sm border border-white border-opacity-30 text-white rounded-xl shadow-2xl p-4 sm:p-6 md:p-8 text-base sm:text-lg md:text-xl lg:text-2xl  mt-6">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam voluptatum impedit esse nemo ab recusandae
           laborum accusamus et. Minus, dignissimos, nisi exercitationem cumque dolor odio voluptatum autem quibusdam
