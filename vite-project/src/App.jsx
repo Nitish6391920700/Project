@@ -11,6 +11,14 @@ import Signup from "./Pages/User/Signup"
 import Login from "./Pages/User/Login"
 import InstructorsSection from "./Pages/Team/Team"
 import CardGalleryComponent from "./Pages/Gallary/Gallery"
+import Carousel from "./Pages/Events/Event"
+import TechSrijanPage from "./Pages/Events/Info"
+import AdminForm from "./Pages/Admin/admin.update"
+import AdminDashboard from "./Pages/Admin/Admin-dasboard"
+import Bacground from "./component/Bacground"
+import ComingSoon from "./Pages/Events/ComingSoon"
+import AboutPage from "./component/About"
+import LandingPage from "./component/ContactUs"
 
  
 
@@ -34,7 +42,24 @@ function App() {
         <Route path="/gallery" element={<Layout>
          <CardGalleryComponent/>
         </Layout>} />
-      
+        <Route path="/events" element={<Layout>
+         <Carousel/>
+        </Layout>} />
+        <Route path="/info" element={<Layout>
+         <TechSrijanPage/>
+        </Layout>} />
+        <Route path="/admin" element={<Layout>
+         <AdminDashboard/>
+        </Layout>} />
+        <Route path="/coming-soon" element={<Layout>
+         <ComingSoon/>
+        </Layout>} />
+        <Route path="/about" element={<Layout>
+         <AboutPage/>
+        </Layout>} />
+        <Route path="/contact" element={<Layout>
+         <LandingPage/>
+        </Layout>} />
       </Routes>
      </BrowserRouter>
   )
