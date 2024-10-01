@@ -30,9 +30,8 @@ const Login = () => {
       );
 
       if (response.status === 200) {
-        // console.log(response.data.message.accessToken)
         setSuccess("Login successful!");
-        localStorage.setItem('accessToken', response.data.message.accessToken);
+        localStorage.setItem("accessToken", response.data.message.accessToken);
         navigate("/");
       } else {
         setError("Login failed. Please try again.");
@@ -51,11 +50,13 @@ const Login = () => {
         //   "url('https://images.unsplash.com/photo-1638184984605-af1f05249a56?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
       }}
     >
-      <div className=" bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg max-w-lg w-full">
+      <div className="bg-opacity-30 backdrop-blur-lg p-8 rounded-lg shadow-lg max-w-lg w-full border-[0.5px]">
         <div className="flex justify-center mb-6">
           <img src={logo} alt="Logo" className="h-16" />
         </div>
-        <h2 className="text-3xl text-center font-bold mb-4 text-white">Login</h2>
+        <h2 className="text-3xl text-center font-bold mb-4 text-white">
+          Login
+        </h2>
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         {success && <p className="text-green-500 text-center mb-4">{success}</p>}
         <form onSubmit={handleSubmit}>
@@ -64,7 +65,7 @@ const Login = () => {
               Email
             </label>
             <input
-              className="w-full px-4 py-2 rounded-md bg-gray-100 bg-opacity-70 border focus:ring-2 focus:ring-green-400 outline-none"
+              className="w-full px-4 py-2 rounded-md bg-gray-100 bg-opacity-70 border focus:ring-2 focus:ring-green-400 outline-none placeholder-gray-800"
               type="email"
               id="email"
               value={email}
@@ -77,7 +78,7 @@ const Login = () => {
               Password
             </label>
             <input
-              className="w-full px-4 py-2 rounded-md bg-gray-100 bg-opacity-70 border focus:ring-2 focus:ring-green-400 outline-none"
+              className="w-full px-4 py-2 rounded-md bg-gray-100 bg-opacity-70 border focus:ring-2 focus:ring-green-400 outline-none placeholder-gray-800"
               type="password"
               id="password"
               value={password}
