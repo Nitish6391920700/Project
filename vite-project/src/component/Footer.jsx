@@ -1,58 +1,70 @@
-import React from 'react';
-
+import logo from "../assets/logo.png"
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-8 " 
-    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1638184984605-af1f05249a56?auto=format&fit=crop&q=80&w=1932&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"}}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          {/* Company Logo/Name */}
-          <div className="mb-4 md:mb-0">
-            <h2 className="text-1xl font-semibold text-white">Why IEEE ?</h2>
-            <h2 className="text-1xl font-semibold text-white"> IEEE Spectrum</h2>
-            <h2 className="text-1xl font-semibold text-white"> IEEE Xplore</h2>
-            <h2 className="text-1xl font-semibold text-white">IEEE Collabratec</h2>
-            <h2 className="text-1xl font-semibold text-white">IEEE Benefits</h2>
+    <footer className="text-gray-300 py-8 bg-gray-900 mt-16">
+      <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        {/* Left section: IEEE logo and address */}
+        <div className="text-center md:text-left ml-8">
+          {/* Logo */}
+          <div className=" justify-center md:justify-start mb-2 flex">
+            <img 
+              src={logo}// Replace this with the actual logo path
+              alt="IEEE SB Logo"
+              className="h-12 w-auto mt-[-8px] "
+            />
+              <h1 className="text-white font-bold text-xl inline-block">
+         
+         <span className="px-1 py-1">IEEE-SB</span> MMMUT
+       </h1>
           </div>
-
-          {/* Navigation Links */}
-          <div className="flex flex-col md:flex-row md:space-x-6">
-            <a href="#" className="hover:text-white transition-colors duration-300">
-              About Us
-            </a>
-            <a href="#" className="hover:text-white transition-colors duration-300">
-              Services
-            </a>
-            <a href="#" className="hover:text-white transition-colors duration-300">
-              Blog
-            </a>
-            <a href="#" className="hover:text-white transition-colors duration-300">
-              Contact
-            </a>
-          </div>
-        </div>
-
-        {/* Social Media Links */}
-        <div className="flex justify-center md:justify-end space-x-6 mt-6">
-          <a href="#" className="hover:text-white transition-colors duration-300">
-            <i className="fab fa-facebook"></i>
-          </a>
-          <a href="#" className="hover:text-white transition-colors duration-300">
-            <i className="fab fa-twitter"></i>
-          </a>
-          <a href="#" className="hover:text-white transition-colors duration-300">
-            <i className="fab fa-instagram"></i>
-          </a>
-        </div>
-
-        {/* Copyright Text */}
-        <div className="text-center mt-6">
-          <p className="text-gray-500">
-            &copy; {new Date().getFullYear()} YourCompany. All rights reserved.
+          {/* <h1 className="text-white font-bold text-xl inline-block">
+         
+            <span className="px-1 py-1">IEEE-SB</span> MMMUT
+          </h1> */}
+          <p className="mt-2">
+            Madan Mohan Malaviya University of Technology GKP, UP
           </p>
         </div>
+
+        {/* Resources */}
+        <div className="text-center md:text-left ml-40">
+          <h2 className="text-white font-semibold inline-block mb-2">Resources:</h2>
+          <ul className="mt-2 space-y-2">
+            <li><a href="#" className="hover:underline">Events</a></li>
+            <li><a href="#" className="hover:underline">Gallery</a></li>
+          </ul>
+        </div>
+
+        {/* Follow Us */}
+        <div className="text-center md:text-left ml-32">
+          <h2 className="text-white font-semibold inline-block mb-2">Follow Us:</h2>
+          <ul className="mt-2 space-y-2">
+            <li><a href="#" className="hover:underline">Github</a></li>
+            <li><a href="#" className="hover:underline">Discord</a></li>
+          </ul>
+        </div>
+
+        {/* Others */}
+        <div className="text-center md:text-left ml-24">
+          <h2 className="text-white font-semibold inline-block mb-2">Others:</h2>
+          <ul className="mt-2 space-y-2">
+            <li><a href="#" className="hover:underline">Contact Us</a></li>
+            <li><a href="#" className="hover:underline">Projects</a></li>
+            <li><a href="#" className="hover:underline">Old Website</a></li>
+          </ul>
+        </div>
       </div>
+
+      {/* Social media icons */}
+      {/* Uncomment if needed */}
+      {/* 
+      <div className="container mx-auto px-4 mt-8 flex justify-center space-x-6 text-2xl">
+        <a href="#" className="hover:text-white"><i className="fab fa-facebook"></i></a>
+        <a href="#" className="hover:text-white"><i className="fab fa-instagram"></i></a>
+        <a href="#" className="hover:text-white"><i className="fab fa-linkedin"></i></a>
+        <a href="#" className="hover:text-white"><i className="fab fa-github"></i></a>
+      </div>
+      */}
     </footer>
   );
 };
