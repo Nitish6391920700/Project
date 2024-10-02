@@ -48,7 +48,7 @@ const Navbar = () => {
             <NavLink 
               to={'/about'}
               className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}
-              onClick={() => setAboutDrawerOpen(!isAboutDrawerOpen)}
+       
             >
               About Us
             </NavLink>
@@ -103,30 +103,20 @@ const Navbar = () => {
       {/* Mobile Menu Items */}
       {isMobileMenuOpen && (
         <ul className="md:hidden flex flex-col items-center mt-4 space-y-4 text-white font-medium">
-          <NavLink to="/" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Home</li></NavLink>
+          <NavLink to="/" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}><li>Home</li></NavLink>
 
           {/* About Us with Drawer in Mobile */}
+          <NavLink to='/about' className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)} >
           <li>
-            <button
-              className="hover:text-cyan-400 focus:outline-none"
-              onClick={() => setAboutDrawerOpen(!isAboutDrawerOpen)}
-            >
               About Us
-            </button>
-            {isAboutDrawerOpen && (
-              <ul className="flex flex-col space-y-2 mt-2">
-                <NavLink to="/about/history"><li className='hover:text-cyan-400'>History</li></NavLink>
-                <NavLink to="/about/vision"><li className='hover:text-cyan-400'>Vision & Mission</li></NavLink>
-                <NavLink to="/about/team"><li className='hover:text-cyan-400'>Our Team</li></NavLink>
-              </ul>
-            )}
           </li>
+          </NavLink>
 
-          <NavLink to="/events" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Events</li></NavLink>
-          <NavLink to="/gallery" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Gallery</li></NavLink>
-          <NavLink to="/team" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Team</li></NavLink>
-          <NavLink to="/signin" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Membership</li></NavLink>
-          <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}><li>Contact Us</li></NavLink>
+          <NavLink to="/events" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'}onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}><li>Events</li></NavLink>
+          <NavLink to="/gallery" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}><li>Gallery</li></NavLink>
+          <NavLink to="/team" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}><li>Team</li></NavLink>
+          <NavLink to="/signin" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}><li>Membership</li></NavLink>
+          <NavLink to="/contact" className={({ isActive }) => isActive ? 'text-cyan-400' : 'hover:text-cyan-400'} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}><li>Contact Us</li></NavLink>
 
           {/* Profile Icon when logged in */}
           {isLoggedIn && (

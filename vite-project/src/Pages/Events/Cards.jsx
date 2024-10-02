@@ -38,7 +38,7 @@ const CardGrid = () => {
       {cards.length > 0 && cards.map((card, index) => {
         // console.log(card); // Debug to see each card object
         return (
-          <Link to={'/info'} key={card._id} className="relative group cursor-pointer">
+          <Link to={'/coming-soon'} key={card._id} className="relative group cursor-pointer">
             {/* Background Image */}
             <div
               className="bg-cover bg-center h-64 rounded-lg shadow-lg"
