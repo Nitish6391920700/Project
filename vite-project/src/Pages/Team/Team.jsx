@@ -20,7 +20,7 @@ const InstructorCard = () => {
   // Hardcoded Faculty Advisor profile
   const facultyAdvisor = {
     id: 1,
-    name: "Dr. John Doe",
+    name: "Rajan Mishra",
     position: "Faculty Advisor",
     imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQG0BG6qtZG8kg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1688828967198?e=1732752000&v=beta&t=A8H5vPFeA6cJEFRyRyDnmkQpfHW-RzgrTy_AE_VFgkw", // Replace with an actual image URL
     socialLinks: {
@@ -35,8 +35,8 @@ const InstructorCard = () => {
   const hardcodedInstructors = [
     {
       id: 2,
-      name: "Jane Smith",
-      position: "Senior Instructor",
+      name: "Akash Pandey",
+      position: "Student-Chair",
       imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQG0BG6qtZG8kg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1688828967198?e=1732752000&v=beta&t=A8H5vPFeA6cJEFRyRyDnmkQpfHW-RzgrTy_AE_VFgkw", // Replace with actual image URL
       socialLinks: {
         twitter: "https://twitter.com/janesmith",
@@ -47,9 +47,9 @@ const InstructorCard = () => {
     },
     {
       id: 3,
-      name: "Mark Johnson",
-      position: "Instructor",
-      imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQG0BG6qtZG8kg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1688828967198?e=1732752000&v=beta&t=A8H5vPFeA6cJEFRyRyDnmkQpfHW-RzgrTy_AE_VFgkw",
+      name: "Antrali",
+      position: "Student-Chair",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D5635AQHj2jywoNnISA/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1723294885541?e=1728500400&v=beta&t=oTGnp3Ff9SdAfRtx0ziHC6WZDa1srb8fAOi2ubtcMzo",
       socialLinks: {
         twitter: "https://twitter.com/markjohnson",
         facebook: "https://facebook.com/markjohnson",
@@ -59,9 +59,21 @@ const InstructorCard = () => {
     },
     {
       id: 4,
-      name: "Emily Davis",
-      position: "Junior Instructor",
-      imageUrl: "https://media.licdn.com/dms/image/v2/D4D03AQG0BG6qtZG8kg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1688828967198?e=1732752000&v=beta&t=A8H5vPFeA6cJEFRyRyDnmkQpfHW-RzgrTy_AE_VFgkw",
+      name: "Ashish Siddharth",
+      position: "Vice-Chairman",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D5635AQGCGOHKtOGB-A/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1722007832222?e=1728500400&v=beta&t=-p7_1mx8ML5PIYMMqrMxnz4QrDsmtwYEmyPEEoYzVwQ",
+      socialLinks: {
+        twitter: "https://twitter.com/emilydavis",
+        facebook: "https://facebook.com/emilydavis",
+        instagram: "https://instagram.com/emilydavis",
+        email: "mailto:emilydavis@example.com"
+      }
+    },
+    {
+      id: 4,
+      name: "Kritika Jaiswal",
+      position: "Vice-Chairman",
+      imageUrl: "https://media.licdn.com/dms/image/v2/D5603AQFzQd7lCCp9Lg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1725325451975?e=1733356800&v=beta&t=kaUh5OeMFwfSBD5layrln679KC0GHafoc1oeKFCScx4",
       socialLinks: {
         twitter: "https://twitter.com/emilydavis",
         facebook: "https://facebook.com/emilydavis",
@@ -74,8 +86,8 @@ const InstructorCard = () => {
   return (
     <div className=" justify-evenly py-10 px-4">
       <div className="max-w-6xl mx-auto text-center mb-10">
-        <h2 className="text-4xl font-bold text-cyan-400 mb-4">Meet Our Expert Team </h2>
-       <p className="text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        {/* <h2 className="text-4xl font-bold text-cyan-400 mb-4">Meet Our Expert Team </h2> */}
+       {/* <p className="text-lg text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
       </div>
       
 
@@ -108,8 +120,9 @@ const InstructorCard = () => {
 
       {/* Instructors Section */}
       <div className="max-w-6xl mx-auto text-center mb-10">
-        <h2 className="text-3xl font-bold text-cyan-400 mb-4">2. Instructors</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 className="text-4xl font-bold text-cyan-400 mb-4">Meet Our Expert Team </h2>
+        <h2 className="text-3xl font-bold text-cyan-400 mb-4">3. Additional Team Members</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {hardcodedInstructors.map((instructor) => (
             <div key={instructor.id} className="p-6 rounded-lg shadow-lg flex flex-col items-center">
               <div className="w-48 h-48 mb-4">
