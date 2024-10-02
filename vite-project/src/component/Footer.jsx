@@ -1,7 +1,7 @@
 import logo from "../assets/logo.png"
 const Footer = () => {
   return (
-    <footer className="text-gray-300 py-8 bg-gray-900">
+    <footer className="text-gray-300 py-8 bg-gray-900 mt-16">
       <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
         {/* Left section: IEEE logo and address */}
         <div className="text-center md:text-left ml-8">
